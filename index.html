@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cats!</title>
+  </head>
+  <body>
+    <header>
+      <div class="lang-selector">
+        <button class="lang-btn">
+          <img
+            src="./assets/images/globe-earth.png"
+            alt="Language"
+            class="lang-icon"
+          />
+        </button>
+        <ul class="lang-list">
+          <li data-lang="uk">Українська</li>
+          <li data-lang="en">English</li>
+          <li data-lang="pl">Polski</li>
+          <li data-lang="es">Español</li>
+        </ul>
+      </div>
+    </header>
+    <div class="meow-container">
+      <div class="cat-box">
+        <h1>CATS!</h1>
+      </div>
+      <div class="button-wrapper">
+        <button class="troll-button">press me!</button>
+      </div>
+    </div>
+    <div class="fact-card hidden">
+      <img src="" alt="Cat" class="cat-fact-img" />
+      <p class="cat-fact-text"></p>
+      <button class="next-fact-btn"></button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script type="module" src="main.js"></script>
+</html>

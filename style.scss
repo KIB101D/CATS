@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+// ==================================================================
+// Cat Font
+// ==================================================================
+@font-face {
+  font-family: "Cattie";
+  src: url("./assets/fonts/Cattie-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ==================================================================
+// CSS Variables
+// ==================================================================
+:root {
+  --standard-font: "Noto Sans", sans-serif;
+  --color-text: #1a1a1a;
+  --color-bg-start: #fffafa;
+  --color-bg-end: #f8fbff;
+  --btn-text: #1a1a1a;
+  --btn-bg: #ffffff;
+  --btn-border: #d1d5db;
+  --btn-hover-bg: #f3f4f6;
+  --btn-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --btn-hover-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+// ==================================================================
+// Mixins & Media Queries (mobile-first)
+// ==================================================================
+
+$tablet: 768px;
+$desktop: 1200px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+// ==================================================================
+// Global reset & base styles
+// ==================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  font-family: var(--standard-font);
+  line-height: 1.5;
+  background: var(--color-bg-start);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+
+  @include tablet {
+    padding: 30px 40px;
+  }
+
+  @include desktop {
+    padding: 40px 60px;
+  }
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+.meow-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+  @include tablet {
+    padding: 30px 40px;
+  }
+
+  @include desktop {
+    padding: 40px 60px;
+  }
+}
+
+.cat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  margin: -100px auto 100px;
+  padding: 20px;
+
+  h1 {
+    font-size: 125px;
+    font-family: "Cattie";
+
+    @include tablet {
+      font-size: 200px;
+    }
+    @include desktop {
+      font-size: 200px;
+    }
+  }
+}
+
+// ==================================================================
+// Troll Button
+// ==================================================================
+
+.troll-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 32px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--btn-text);
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: 12px;
+  box-shadow: var(--btn-shadow);
+  cursor: pointer;
+  transition: background-color 0.14s ease, box-shadow 0.14s ease,
+    transform 0.14s ease;
+  user-select: none;
+  min-width: 140px;
+
+  @include tablet {
+    padding: 18px 42px;
+    font-size: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 18px 42px;
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+    box-shadow: var(--btn-hover-shadow);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--btn-shadow);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+
+  @include tablet {
+    margin-top: 2.5rem;
+  }
+
+  @include desktop {
+    margin-top: 2.5rem;
+  }
+}
+
+.cat-fact-img {
+  width: 313px;
+  height: 188px;
+  object-fit: cover;
+
+  @include tablet {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+.lang-selector {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: fit-content;
+
+  .lang-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+
+    .lang-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .lang-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 140px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+    li {
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #eee;
+      font-size: 14px;
+      text-align: left;
+
+      &:hover {
+        background: #333;
+        color: #bdedfc;
+      }
+    }
+  }
+
+  &:hover .lang-list {
+    display: block;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
