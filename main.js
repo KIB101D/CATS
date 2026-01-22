@@ -188,7 +188,9 @@ mainBtn?.addEventListener("click", async () => {
 if (nextFactBtn) {
   nextFactBtn.addEventListener("click", async () => {
     if (currentFactIndex >= catFacts.length - 1) {
-      showThankYou();
+      await curtainTransition(async () => {
+        showThankYou();
+      });
       return;
     }
 
