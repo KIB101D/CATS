@@ -13,35 +13,85 @@
     <title>Cats!</title>
   </head>
   <body>
-    <header>
-      <div class="lang-selector">
-        <button class="lang-btn">
-          <img
-            src="./assets/images/globe-earth.png"
-            alt="Language"
-            class="lang-icon"
-          />
-        </button>
-        <ul class="lang-list">
-          <li data-lang="uk">Українська</li>
-          <li data-lang="en">English</li>
-          <li data-lang="pl">Polski</li>
-          <li data-lang="es">Español</li>
-        </ul>
-      </div>
-    </header>
+    <canvas id="space"></canvas>
+    <div id="paw-layer"></div>
+
+    <div class="intro-logo">CATS!</div>
+
+    <details class="lang-selector">
+      <summary class="lang-btn">
+        <img
+          src="./assets/images/globe-earth.png"
+          alt="Language"
+          class="lang-icon"
+        />
+      </summary>
+
+      <ul class="lang-list">
+        <li data-lang="uk">
+          Українська
+          <img class="lang-paw" src="./assets/images/paw-icon.png" alt="" />
+        </li>
+        <li data-lang="en" aria-current="true">
+          English
+          <img class="lang-paw" src="./assets/images/paw-icon.png" alt="" />
+        </li>
+        <li data-lang="pl">
+          Polski
+          <img class="lang-paw" src="./assets/images/paw-icon.png" alt="" />
+        </li>
+        <li data-lang="es">
+          Español
+          <img class="lang-paw" src="./assets/images/paw-icon.png" alt="" />
+        </li>
+      </ul>
+    </details>
+
     <div class="meow-container">
       <div class="cat-box">
-        <h1>CATS!</h1>
+        <p>CATS!</p>
       </div>
       <div class="button-wrapper">
-        <button class="troll-button">press me!</button>
+        <button class="troll-button">impress me!</button>
       </div>
     </div>
+
+    <div id="screen-error" class="hidden">
+      <div class="error-icon">⚠️</div>
+      <div class="error-code">ERROR</div>
+      <div class="error-message">...</div>
+      <button class="retry-btn">Try again</button>
+    </div>
+
     <div class="fact-card hidden">
-      <img src="" alt="Cat" class="cat-fact-img" />
-      <p class="cat-fact-text"></p>
-      <button class="next-fact-btn"></button>
+      <div class="cat-image-box">
+        <img class="cat-fact-img" src="" alt="cat" />
+      </div>
+      <div class="fact-divider"></div>
+      <div class="gap-box">
+        <div class="cat-text-box">
+          <p class="cat-fact-text"></p>
+        </div>
+        <div class="fact-btn-wrapper">
+          <button class="next-fact-btn">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="dojo-curtain">
+      <div class="door">
+        <div class="door-handle"></div>
+      </div>
+    </div>
+
+    <div id="thank-you-screen" class="hidden">
+      <div class="thank-you-content">
+        <h1>Дякую за візит!</h1>
+        <p>Сподіваюся, вам сподобався цей проєкт 🐾</p>
+        <div class="restart-btn-wrapper">
+          <button id="restart-btn">Грати знову</button>
+        </div>
+      </div>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
