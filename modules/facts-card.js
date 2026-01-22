@@ -2,9 +2,7 @@
 import { getElement } from "./dom.js";
 import { catFacts, uiFacts } from "./facts/facts.js";
 
-let currentFactIndex = 0;
-
-export function renderFactCard(lang, catUrl = null) {
+export function renderFactCard(lang, catUrl = null, currentFactIndex) {
   const factText = getElement(".cat-fact-text");
   const factBtn = getElement(".next-fact-btn");
   const factImg = getElement(".cat-fact-img");
@@ -16,7 +14,9 @@ export function renderFactCard(lang, catUrl = null) {
 
   if (currentFactIndex < catFacts.length) {
     factText.textContent =
-      catFacts[currentFactIndex][lang] || catFacts[currentFactIndex].en;
+      catFacts[currentFactIndex][lang] ||
+      catFacts[currentFactIndex].en ||
+      "No fact";
   } else {
     factText.textContent = "Факти закінчилися...";
   }
@@ -44,14 +44,9 @@ export function renderFactCard(lang, catUrl = null) {
   }
 }
 
-export function moveNext() {
+export function moveNext(currentFactIndex) {
   if (currentFactIndex < catFacts.length - 1) {
-    currentFactIndex++;
-    return true;
+    return currentFactIndex + 1;
   }
-  return false;
-}
-
-export function getCurrentIndex() {
   return currentFactIndex;
 }
