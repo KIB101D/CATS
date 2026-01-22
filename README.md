@@ -12,7 +12,7 @@ The project combines random cat facts, cute images, sound effects, and a bit of 
 
 ## Planned Features
 
-- Fix issues with loading and displaying facts
+- Fix issues with loading and displaying facts ✅
 - Add more sound effects
 - Enhance project documentation (README)
 
