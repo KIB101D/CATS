@@ -5,7 +5,15 @@ const trollBtn = document.querySelector(".troll-button");
 const langSelector = document.querySelector(".lang-selector");
 const spaceCanvas = document.getElementById("space");
 const introLogo = document.querySelector(".intro-logo");
+let audioContextUnlocked = false;
 
+// Space Sound
+const spaceWonder = new Audio("./assets/sounds/space.mp3");
+spaceWonder.preload = "auto";
+spaceWonder.volume = 0.7;
+spaceWonder.loop = false;
+
+// Hide elements
 export function HideBeforeIntro() {
   // спочатку ховаємо основний контент
   if (catBox) hide(catBox);
@@ -90,6 +98,10 @@ export function introStart() {
   }
 
   initSpaceWarp();
+  spaceWonder.currentTime = 0;
+  spaceWonder.play().catch((err) => {
+    console.log("Space sound autoplay blocked:", err);
+  });
 
   setTimeout(() => {
     document.body.classList.add("intro-finished");
@@ -97,6 +109,9 @@ export function introStart() {
     setTimeout(() => {
       if (spaceCanvas) spaceCanvas.style.display = "none";
       if (introLogo) introLogo.style.display = "none";
+
+      spaceWonder.pause();
+      spaceWonder.currentTime = 0;
 
       if (catBox) show(catBox);
       if (trollBtn) show(trollBtn);
@@ -115,3 +130,22 @@ function showContentImmediately() {
   const meow = document.querySelector(".meow-container");
   if (meow) show(meow);
 }
+
+// Intro sound unlock
+document.addEventListener(
+  "click",
+  function unlockAudio() {
+    if (!audioContextUnlocked && spaceWonder.paused) {
+      spaceWonder
+        .play()
+        .then(() => {
+          spaceWonder.pause();
+          spaceWonder.currentTime = 0;
+          audioContextUnlocked = true;
+          console.log("Аудіо-контекст розблоковано");
+        })
+        .catch((e) => console.log("Не вдалося розблокувати:", e));
+    }
+  },
+  { once: true },
+);
