@@ -1,4 +1,4 @@
-import { uiMain, uiFacts, catFacts } from "./facts/facts.js";
+import { uiMain, uiFacts, catFacts, errorMessages } from "./facts/facts.js";
 
 export function updateInterface(lang, clickCount = 0, factIndex = null) {
   const mainBtn = document.querySelector(".troll-button");
