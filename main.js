@@ -80,7 +80,7 @@ initCurtain();
 // Global state
 let currentLang = "en";
 let clicks = 0;
-let currentFactIndex = Math.floor(Math.random() * catFacts.length);
+let currentFactIndex = 0;
 let localCatQueue = [];
 
 function preloadImage(url) {
@@ -115,7 +115,7 @@ async function loadNewFact() {
     const currentCat = localCatQueue.shift();
     if (currentCat) {
       const catUrl = currentCat.imageUrl;
-      renderFactCard(currentLang, catUrl);
+      renderFactCard(currentLang, catUrl, currentFactIndex);
       renderSuccessState();
       return true;
     }
@@ -165,7 +165,6 @@ mainBtn?.addEventListener("click", async () => {
   if (clicks >= 3) return;
 
   clicks++;
-  currentFactIndex = Math.floor(Math.random() * catFacts.length);
   updateInterface(currentLang, clicks, currentFactIndex);
 
   if (clicks === 1) {
@@ -174,6 +173,7 @@ mainBtn?.addEventListener("click", async () => {
 
   if (clicks >= 3) {
     await curtainTransition(async () => {
+      currentFactIndex = 0;
       const success = await loadNewFact();
       if (success) {
         hide(meowContainer);
@@ -187,17 +187,14 @@ mainBtn?.addEventListener("click", async () => {
 
 if (nextFactBtn) {
   nextFactBtn.addEventListener("click", async () => {
-    clicks++;
-    if (clicks > 15) {
-      return showThankYou();
+    if (currentFactIndex >= catFacts.length - 1) {
+      showThankYou();
+      return;
     }
 
-    const hasMore = moveNext();
-    if (hasMore) {
-      await loadNewFact();
-    } else {
-      await loadNewFact();
-    }
+    currentFactIndex = moveNext(currentFactIndex);
+
+    await loadNewFact();
   });
 }
 
