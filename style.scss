@@ -136,7 +136,9 @@ body {
   font-family: "Cattie", sans-serif;
   font-size: 110px;
   letter-spacing: 0.06em;
-  text-shadow: 0 0 25px #fff, 0 0 70px var(--color-accent-glow),
+  text-shadow:
+    0 0 25px #fff,
+    0 0 70px var(--color-accent-glow),
     0 0 140px var(--color-accent);
   opacity: 0;
   transform: scale(0.7);
@@ -243,7 +245,9 @@ button {
   p {
     font-size: 125px;
     font-family: "Cattie";
-    text-shadow: 0 0 25px #fff, 0 0 70px var(--color-accent-glow),
+    text-shadow:
+      0 0 25px #fff,
+      0 0 70px var(--color-accent-glow),
       0 0 140px var(--color-accent);
     color: #ffffff;
 
@@ -385,7 +389,8 @@ button {
     padding: 6px 0;
     min-width: 160px;
     z-index: 1000;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6),
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.6),
       0 0 0 1px rgba(79, 209, 197, 0.08);
     overflow: hidden;
     backdrop-filter: blur(6px);
@@ -520,8 +525,10 @@ button {
         $metal-dark
       );
 
-      box-shadow: inset 2px 0 4px rgba(255, 255, 255, 0.45),
-        inset -2px 0 6px rgba(0, 0, 0, 0.6), 2px 4px 12px rgba(0, 0, 0, 0.6);
+      box-shadow:
+        inset 2px 0 4px rgba(255, 255, 255, 0.45),
+        inset -2px 0 6px rgba(0, 0, 0, 0.6),
+        2px 4px 12px rgba(0, 0, 0, 0.6);
 
       &::before,
       &::after {
@@ -623,7 +630,9 @@ button {
   &.loading {
     filter: blur(18px) grayscale(0.35);
     transform: scale(1.04);
-    transition: filter 0.7s ease-out, transform 0.7s ease-out,
+    transition:
+      filter 0.7s ease-out,
+      transform 0.7s ease-out,
       opacity 0.7s ease-out;
   }
 
@@ -633,7 +642,9 @@ button {
     opacity: 1;
   }
 
-  transition: filter 0.7s ease-out, transform 0.7s ease-out,
+  transition:
+    filter 0.7s ease-out,
+    transform 0.7s ease-out,
     opacity 0.4s ease-out;
 
   // fallback-style
@@ -838,7 +849,9 @@ button {
     background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    transition:
+      width 0.6s ease,
+      height 0.6s ease;
     pointer-events: none;
   }
 
@@ -882,7 +895,9 @@ button {
   filter: drop-shadow(0 0 6px rgba(148, 163, 184, 0.25));
 
   animation: paw-fade 9s infinite;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 
   @include tablet {
     font-size: 40px;
@@ -922,7 +937,7 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 9999;
+  z-index: auto;
 
   h1 {
     font-size: 2.5rem;
