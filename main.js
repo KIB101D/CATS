@@ -1,6 +1,6 @@
 import { fetchTheCat } from "./api/random-cat.js";
 import { updateInterface } from "./modules/ui-updater.js";
-import { catFacts, errorMessages } from "./modules/facts/facts.js"; // ← тут імпортуємо і факти, і повідомлення про помилки
+import { catFacts, errorMessages } from "./modules/facts/facts.js"; 
 import { spawnConfetti } from "./modules/confetti.js";
 import { hide, show } from "./modules/hide.js";
 import { renderFactCard, moveNext } from "./modules/facts-card.js";
@@ -73,15 +73,71 @@ const nextFactBtn = document.querySelector(".next-fact-btn");
 const thankYouScreen = document.querySelector("#thank-you-screen");
 const restartBtn = document.querySelector("#restart-btn");
 
-HideBeforeIntro();
-introStart();
-initCurtain();
+document.addEventListener("DOMContentLoaded", () => {
+  HideBeforeIntro();
+  initCurtain();
+
+  let userInteracted = false;
+  const audio = new Audio("./assets/sounds/space.mp3"); // створюємо аудіо заздалегідь
+  audio.preload = "auto";
+  audio.volume = 0.7;
+  audio.loop = false;
+
+  function handleFirstInteraction() {
+    if (!userInteracted) {
+      userInteracted = true;
+      audio.play().catch((e) => console.log("Автозапуск заблоковано", e));
+      introStart(); // запускаємо анімацію або інші дії
+      // прибираємо слухачі після першого кліку
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+    }
+  }
+
+  // слухачі на першу взаємодію
+  window.addEventListener("click", handleFirstInteraction);
+  window.addEventListener("keydown", handleFirstInteraction);
+  window.addEventListener("touchstart", handleFirstInteraction);
+});
+
+// ─── Sounds (meow like) ────────────────────────────────────────
+const meowCozy = new Audio("./assets/sounds/meow-cozy.mp3");
+const meowStandard = new Audio("./assets/sounds/meow-standard.mp3");
+
+meowCozy.preload = "auto";
+meowStandard.preload = "auto";
+meowCozy.volume = 0.65;
+meowStandard.volume = 0.65;
+
+// Сozy Meow
+function playCozyMeow() {
+  meowCozy.currentTime = 0;
+  meowCozy.play().catch((err) => {
+    console.log("Cozy meow not loading:", err);
+  });
+}
+
+// Standard Meow
+function playStandardMeow() {
+  meowStandard.currentTime = 0;
+  meowStandard.play().catch((err) => {
+    console.log("Standard meow not loading:", err);
+  });
+}
 
 // Global state
 let currentLang = "en";
 let clicks = 0;
 let currentFactIndex = 0;
 let localCatQueue = [];
+
+function initAudio() {
+  const audio = new Audio("sound.mp3");
+  audio.play().catch((e) => {
+    console.log("Автозапуск заблоковано", e);
+  });
+}
 
 function preloadImage(url) {
   return new Promise((resolve) => {
@@ -172,6 +228,7 @@ mainBtn?.addEventListener("click", async () => {
   }
 
   if (clicks >= 3) {
+    playStandardMeow();
     await curtainTransition(async () => {
       currentFactIndex = 0;
       const success = await loadNewFact();
@@ -193,7 +250,7 @@ if (nextFactBtn) {
       });
       return;
     }
-
+    playCozyMeow();
     currentFactIndex = moveNext(currentFactIndex);
 
     await loadNewFact();
