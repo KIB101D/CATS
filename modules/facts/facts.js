@@ -113,8 +113,66 @@ export const uiMain = [
 ];
 
 export const uiFacts = {
-  uk: { button: "Наступний факт" },
+  uk: { button: "Наступний" },
   en: { button: "Next fact" },
   pl: { button: "Kolejny fakt" },
   es: { button: "Siguiente dato" },
+};
+
+export const errorMessages = {
+  offline: {
+    uk: {
+      code: "🌐 ПОМИЛКА З'ЄДНАННЯ",
+      message: "Здається, інтернет зник. Перевір з'єднання та спробуй ще раз.",
+    },
+    en: {
+      code: "🌐 CONNECTION ERROR",
+      message: "Looks like the internet disappeared. Check your connection.",
+    },
+    pl: {
+      code: "🌐 BŁĄD POŁĄCZENIA",
+      message: "Wygląda na to, że internet zniknął. Sprawdź połączenie.",
+    },
+    es: {
+      code: "🌐 ERROR DE CONEXIÓN",
+      message: "Parece que internet desapareció. Verifica tu conexión.",
+    },
+  },
+  api: {
+    uk: {
+      code: "⚠️ ПОМИЛКА API",
+      message: "Сервер котиків тимчасово недоступний. Спробуй пізніше!",
+    },
+    en: {
+      code: "⚠️ API ERROR",
+      message: "The cat server is temporarily unavailable. Try again later!",
+    },
+    pl: {
+      code: "⚠️ BŁĄD API",
+      message: "Serwer kotów jest chwilowo niedostępny. Spróbuj później!",
+    },
+    es: {
+      code: "⚠️ ERROR DE API",
+      message:
+        "El servidor de gatos está temporalmente no disponible. ¡Intenta más tarde!",
+    },
+  },
+  generic: {
+    uk: {
+      code: "😿 ЩОСЬ ПІШЛО НЕ ТАК",
+      message: "Не вдалося завантажити котика. Спробуй ще раз.",
+    },
+    en: {
+      code: "😿 SOMETHING WENT WRONG",
+      message: "Failed to load a cat. Try again.",
+    },
+    pl: {
+      code: "😿 COŚ POSZŁO NIE TAK",
+      message: "Nie udało się załadować kota. Spróbuj ponownie.",
+    },
+    es: {
+      code: "😿 ALGO SALIÓ MAL",
+      message: "No se pudo cargar un gato. Intenta de nuevo.",
+    },
+  },
 };
