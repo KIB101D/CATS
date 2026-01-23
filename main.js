@@ -1,6 +1,10 @@
 import { fetchTheCat } from "./api/random-cat.js";
 import { updateInterface } from "./modules/ui-updater.js";
-import { catFacts, errorMessages } from "./modules/facts/facts.js"; 
+import {
+  catFacts,
+  errorMessages,
+  greetingsScreen,
+} from "./modules/facts/facts.js"; 
 import { spawnConfetti } from "./modules/confetti.js";
 import { hide, show } from "./modules/hide.js";
 import { renderFactCard, moveNext } from "./modules/facts-card.js";
@@ -214,6 +218,14 @@ langItems.forEach((item) => {
     }
 
     updateErrorText(currentLang);
+
+    if (!thankYouScreen.classList.contains("hidden")) {
+      const texts = greetingsScreen[currentLang] || greetingsScreen.uk;
+      thankYouScreen.querySelector("h1").textContent = texts.h1;
+      thankYouScreen.querySelector("p").textContent = texts.p;
+      thankYouScreen.querySelector("#restart-btn").textContent =
+        texts.tryAgainBtn;
+    }
   });
 });
 
@@ -290,7 +302,7 @@ function showThankYou() {
   hide(factScreen);
   hide(meowContainer);
   show(thankYouScreen);
-  spawnConfetti(); // add somesthing normal
+  spawnConfetti();
 }
 
 // Interface initialization
