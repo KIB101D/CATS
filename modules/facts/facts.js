@@ -176,3 +176,26 @@ export const errorMessages = {
     },
   },
 };
+
+export const greetingsScreen = {
+  uk: {
+    h1: "Дякую за візит!",
+    p: "Сподіваюся, вам сподобався цей проєкт 🐾",
+    tryAgainBtn: "Ще раз?",
+  },
+  en: {
+    h1: "Thanks for visiting!",
+    p: "Hope you enjoyed this project 🐾",
+    tryAgainBtn: "Try again?",
+  },
+  pl: {
+    h1: "Dzięki za wizytę!",
+    p: "Mam nadzieję, że spodobał Ci się ten projekt 🐾",
+    tryAgainBtn: "Jeszcze raz?",
+  },
+  es: {
+    h1: "¡Gracias por visitarnos!",
+    p: "Espero que te haya gustado este proyecto 🐾",
+    tryAgainBtn: "¿Otra vez?",
+  },
+};
