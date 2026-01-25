@@ -17,11 +17,9 @@ The project combines random cute cat images, sound effects, and a bit of intenti
 
 ### Desktop
 
-<p align="center">
-  <img src="/screenshotsCats/desktop1.png" width="32%" alt="Start Screen" />
-  <img src="/screenshotsCats/desktop2.png" width="32%" alt="Fact Screen with cat and text" />
-  <img src="/screenshotsCats/desktop3.png" width="32%" alt="Error Screen" />
-</p>
+  <img src="/screenshotsCats/desktop1.png" width="100%" alt="Start Screen" />
+  <img src="/screenshotsCats/desktop2.png" width="100%" alt="Fact Screen with cat and text" />
+  <img src="/screenshotsCats/desktop3.png" width="100%" alt="Error Screen" />
 
 ### Mobile
 
