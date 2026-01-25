@@ -180,22 +180,22 @@ export const errorMessages = {
 export const greetingsScreen = {
   uk: {
     h1: "Дякую за візит!",
-    p: "Сподіваюся, вам сподобався цей проєкт 🐾",
-    tryAgainBtn: "Ще раз?",
+    p: "Сподіваюся, тобі сподобався цей проєкт 🐾 Можете вільно форкнути або оцінити зірочкою на GitHub!",
+    tryAgainBtn: "Пробуємо ще?",
   },
   en: {
     h1: "Thanks for visiting!",
-    p: "Hope you enjoyed this project 🐾",
+    p: "Hope you enjoyed this project 🐾 Feel free to fork or star it on GitHub!",
     tryAgainBtn: "Try again?",
   },
   pl: {
     h1: "Dzięki za wizytę!",
-    p: "Mam nadzieję, że spodobał Ci się ten projekt 🐾",
+    p: "Mam nadzieję, że ten projekt Ci się spodobał 🐾 Śmiało forkuj lub daj gwiazdkę na GitHubie!",
     tryAgainBtn: "Jeszcze raz?",
   },
   es: {
     h1: "¡Gracias por visitarnos!",
-    p: "Espero que te haya gustado este proyecto 🐾",
+    p: "Espero que te haya gustado este proyecto 🐾 ¡Siéntete libre de hacer fork o darle una estrellita en GitHub!",
     tryAgainBtn: "¿Otra vez?",
   },
 };
