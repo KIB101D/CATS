@@ -124,55 +124,68 @@ export const errorMessages = {
     uk: {
       code: "🌐 ПОМИЛКА З'ЄДНАННЯ",
       message: "Здається, інтернет зник. Перевір з'єднання та спробуй ще раз.",
+      retryBtn: "Повторити",
     },
     en: {
       code: "🌐 CONNECTION ERROR",
       message: "Looks like the internet disappeared. Check your connection.",
+      retryBtn: "Try again",
     },
     pl: {
       code: "🌐 BŁĄD POŁĄCZENIA",
-      message: "Wygląda na to, że internet zniknął. Sprawdź połączenie.",
+      message:
+        "Wygląda na to, że straciłeś połączenie z internetem. Sprawdź je i spróbuj ponownie.",
+      retryBtn: "Spróbuj ponownie",
     },
     es: {
       code: "🌐 ERROR DE CONEXIÓN",
       message: "Parece que internet desapareció. Verifica tu conexión.",
+      retryBtn: "Intenta otra vez",
     },
   },
   api: {
     uk: {
       code: "⚠️ ПОМИЛКА API",
       message: "Сервер котиків тимчасово недоступний. Спробуй пізніше!",
+      retryBtn: "Повторити",
     },
     en: {
       code: "⚠️ API ERROR",
-      message: "The cat server is temporarily unavailable. Try again later!",
+      message: "The cat server is temporarily down. Try again later!",
+      retryBtn: "Try again",
     },
     pl: {
       code: "⚠️ BŁĄD API",
       message: "Serwer kotów jest chwilowo niedostępny. Spróbuj później!",
+      retryBtn: "Spróbuj ponownie",
     },
     es: {
       code: "⚠️ ERROR DE API",
       message:
-        "El servidor de gatos está temporalmente no disponible. ¡Intenta más tarde!",
+        "¡El servidor de gatitos está temporalmente fuera de servicio! Inténtalo de nuevo más tarde.",
+      retryBtn: "Intenta otra vez",
     },
   },
   generic: {
     uk: {
       code: "😿 ЩОСЬ ПІШЛО НЕ ТАК",
       message: "Не вдалося завантажити котика. Спробуй ще раз.",
+      retryBtn: "Повторити",
     },
     en: {
       code: "😿 SOMETHING WENT WRONG",
       message: "Failed to load a cat. Try again.",
+      retryBtn: "Try again",
     },
     pl: {
       code: "😿 COŚ POSZŁO NIE TAK",
-      message: "Nie udało się załadować kota. Spróbuj ponownie.",
+      message: "Nie udało się załadować kotka. Spróbuj ponownie.",
+      retryBtn: "Spróbuj ponownie",
     },
     es: {
       code: "😿 ALGO SALIÓ MAL",
       message: "No se pudo cargar un gato. Intenta de nuevo.",
+      retryBtn: "Intenta otra vez",
     },
   },
 };
