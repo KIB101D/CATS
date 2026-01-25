@@ -50,6 +50,11 @@ function renderErrorState(error = null, lang = "en") {
 
   errorCodeEl.textContent = msgSet.code;
   errorMessageEl.textContent = msgSet.message;
+
+  const retryBtn = document.querySelector(".retry-btn");
+  if (retryBtn) {
+    retryBtn.textContent = msgSet.retryBtn || "Try again";
+  }
 }
 
 function renderSuccessState() {
@@ -292,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Greetings screen
 function updateThankYou() {
-  const texts = greetingsScreen[currentLang] || greetingsScreen.en; 
+  const texts = greetingsScreen[currentLang] || greetingsScreen.uk; // або .en
 
   thankYouScreen.querySelector("h1").textContent = texts.h1;
 
