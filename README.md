@@ -1,4 +1,7 @@
 # CATS! – Facts & Chaos 🐾
+[![GitHub stars](https://img.shields.io/github/stars/KIB101D/CATS?style=social)](https://github.com/KIB101D/CATS/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/KIB101D/CATS?style=social)](https://github.com/KIB101D/CATS/network/members)
+[![License](https://img.shields.io/github/license/KIB101D/CATS)](LICENSE)
 
 **CATS! – Facts & Chaos** is a **mobile-first**, responsive interactive website created purely for fun :)
 
