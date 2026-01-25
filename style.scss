@@ -606,7 +606,7 @@ button {
 .cat-fact-text {
   font-size: clamp(22px, 6.5vw, 30px);
   line-height: 1.4;
-  color: var(--color-text);
+  color: var(--color-text-light);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
@@ -924,43 +924,129 @@ button {
   }
 }
 
-// thank-you-screen
+// ────────────────────────────────────────────────
+// Thank You Screen
+// ────────────────────────────────────────────────
 
 #thank-you-screen {
+  display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
+  inset: 0;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
   text-align: center;
-  z-index: auto;
+  color: var(--color-text, #e5f5ff);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-start, #17212f) 0%,
+    var(--color-bg-end, #0d141f) 100%
+  );
+  overflow: hidden;
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  &.hidden {
+    display: none;
   }
 
-  button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    color: var(--btn-text);
-    background-color: var(--btn-bg);
-    border: 1px solid var(--btn-border);
-    border-radius: 12px;
-    box-shadow: var(--btn-shadow);
+  &:not(.hidden) {
+    display: flex;
+  }
+}
+
+.thank-you-content {
+  position: relative;
+  z-index: 9999;
+  max-width: 620px;
+
+  h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0 0 1.2rem;
+    color: var(--color-accent, #4fd1c5);
+    text-shadow: 0 2px 12px rgba(79, 209, 197, 0.35);
+    letter-spacing: -0.8px;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 0 0 1.1rem;
+    color: var(--color-text-muted, #b3d4e8);
+
+    &:last-of-type {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.github-link {
+  margin: 0rem 0 2.5rem;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #b3d4e8);
+
+  a {
+    color: var(--color-accent, #4fd1c5);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: #7dd3fc;
+      text-shadow: 0 0 10px rgba(79, 209, 197, 0.4);
+    }
+
+    &::after {
+      content: " →";
+      margin-left: 0.4rem;
+      opacity: 0.75;
+      transition: margin-left 0.25s ease;
+    }
+
+    &:hover::after {
+      margin-left: 0.8rem;
+    }
   }
 }
 
 .restart-btn-wrapper {
-  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 
-  @include tablet {
-    padding-top: 100px;
+#restart-btn {
+  padding: 1rem 3rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4fd1c5 0%, #38b5a8 100%);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(79, 209, 197, 0.35);
+  transition: all 0.28s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(79, 209, 197, 0.5);
   }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thank-you-content {
+  animation: fadeInUp 0.8s ease-out;
 }
