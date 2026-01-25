@@ -24,7 +24,7 @@ The project combines random cute cat images, sound effects, and a bit of intenti
 ### Mobile
 
 <p align="center">
-  <img src="/screenshotsCats/screen-mobile.png" width="45%" alt="Mobile adaptation – all screens in one view" />
+  <img src="/screenshotsCats/screen-mobile.png" width="100%" alt="Mobile adaptation – all screens in one view" />
 </p>
 
 > Responsive on phones, tablets and desktops 🐱
