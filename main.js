@@ -4,7 +4,7 @@ import {
   catFacts,
   errorMessages,
   greetingsScreen,
-} from "./modules/facts/facts.js"; 
+} from "./modules/facts/facts.js";
 import { spawnConfetti } from "./modules/confetti.js";
 import { hide, show } from "./modules/hide.js";
 import { renderFactCard, moveNext } from "./modules/facts-card.js";
@@ -21,7 +21,7 @@ const errorMessageEl = document.querySelector(".error-message");
 const factScreen = document.querySelector(".fact-card");
 
 // ────────────────────────────────────────────────
-// State function error / succes
+// State function error / success
 // ────────────────────────────────────────────────
 function renderErrorState(error = null, lang = "en") {
   if (!errorScreen || !errorCodeEl || !errorMessageEl) {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCurtain();
 
   let userInteracted = false;
-  const audio = new Audio("./assets/sounds/space.mp3"); // створюємо аудіо заздалегідь
+  const audio = new Audio("./assets/sounds/space.mp3");
   audio.preload = "auto";
   audio.volume = 0.7;
   audio.loop = false;
@@ -91,15 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!userInteracted) {
       userInteracted = true;
       audio.play().catch((e) => console.log("Автозапуск заблоковано", e));
-      introStart(); // запускаємо анімацію або інші дії
-      // прибираємо слухачі після першого кліку
+      introStart();
       window.removeEventListener("click", handleFirstInteraction);
       window.removeEventListener("keydown", handleFirstInteraction);
       window.removeEventListener("touchstart", handleFirstInteraction);
     }
   }
 
-  // слухачі на першу взаємодію
   window.addEventListener("click", handleFirstInteraction);
   window.addEventListener("keydown", handleFirstInteraction);
   window.addEventListener("touchstart", handleFirstInteraction);
@@ -217,15 +215,9 @@ langItems.forEach((item) => {
       textElement.textContent = newText;
     }
 
-    updateErrorText(currentLang);
+    updateThankYou();
 
-    if (!thankYouScreen.classList.contains("hidden")) {
-      const texts = greetingsScreen[currentLang] || greetingsScreen.uk;
-      thankYouScreen.querySelector("h1").textContent = texts.h1;
-      thankYouScreen.querySelector("p").textContent = texts.p;
-      thankYouScreen.querySelector("#restart-btn").textContent =
-        texts.tryAgainBtn;
-    }
+    updateErrorText(currentLang);
   });
 });
 
@@ -298,10 +290,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Greetings screen
+function updateThankYou() {
+  const texts = greetingsScreen[currentLang] || greetingsScreen.en; 
+
+  thankYouScreen.querySelector("h1").textContent = texts.h1;
+
+  const githubP = thankYouScreen.querySelector(".github-link p");
+  if (githubP) githubP.textContent = texts.p;
+
+  thankYouScreen.querySelector("#restart-btn").textContent = texts.tryAgainBtn;
+}
+
 function showThankYou() {
   hide(factScreen);
   hide(meowContainer);
   show(thankYouScreen);
+
+  updateThankYou();
+
   spawnConfetti();
 }
 
