@@ -875,6 +875,7 @@ button {
   position: fixed;
   top: 24px;
   right: 24px;
+  max-width: min(92vw, 360px);
   background: #22303f;
   padding: 16px 20px;
   border: 2px solid #4fd1c5;
@@ -883,6 +884,11 @@ button {
   overflow: hidden;
   animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 9999;
+}
+@media (min-width: 768px) {
+  .toast {
+    max-width: inherit;
+  }
 }
 
 .toast-inner {
@@ -914,7 +920,7 @@ button {
   position: relative;
   overflow: hidden;
 }
-.iconafter {
+.icon::after {
   content: "";
   position: absolute;
   top: 0;
@@ -935,44 +941,35 @@ button {
   color: #b3d4e8;
 }
 
-.toast .standard {
+.toast.standard {
   border-color: #4fd1c5;
 }
-.toast .standardbefore {
+.toast.standard::before, .toast.standard::after {
   background: #4fd1c5;
 }
-.toast .standardafter {
-  background: #4fd1c5;
-}
-.toast .standard .title {
+.toast.standard .title {
   color: #4fd1c5;
 }
-.toast .rare {
+.toast.rare {
   border-color: #a3e635;
 }
-.toast .rarebefore {
+.toast.rare::before, .toast.rare::after {
   background: #a3e635;
 }
-.toast .rareafter {
-  background: #a3e635;
-}
-.toast .rare .title {
+.toast.rare .title {
   color: #a3e635;
 }
-.toast .legendary {
+.toast.legendary {
   border-color: #7dd3fc;
   box-shadow: 0 0 18px 3px #7dd3fc, 0 6px 24px rgba(0, 0, 0, 0.5);
 }
-.toast .legendarybefore {
+.toast.legendary::before, .toast.legendary::after {
   background: #7dd3fc;
 }
-.toast .legendaryafter {
-  background: #7dd3fc;
-}
-.toast .legendary .title {
+.toast.legendary .title {
   color: #7dd3fc;
 }
-.toast fade-out {
+.toast.fade-out {
   animation: fadeOut 0.5s forwards;
 }
 
