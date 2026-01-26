@@ -11,6 +11,7 @@ import { renderFactCard, moveNext } from "./modules/facts-card.js";
 import { initCurtain, curtainTransition } from "./modules/dojo-curtain.js";
 import { HideBeforeIntro, introStart } from "./modules/intro-start.js";
 import { initPawBackground } from "./modules/pawBackground.js";
+import { playRandomMeow, playStandardMeow } from "./modules/meow.js";
 
 // ────────────────────────────────────────────────
 //  DOM (error states)
@@ -107,31 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("keydown", handleFirstInteraction);
   window.addEventListener("touchstart", handleFirstInteraction);
 });
-
-// ─── Sounds (meow like) ────────────────────────────────────────
-const meowCozy = new Audio("./assets/sounds/meow-cozy.mp3");
-const meowStandard = new Audio("./assets/sounds/meow-standard.mp3");
-
-meowCozy.preload = "auto";
-meowStandard.preload = "auto";
-meowCozy.volume = 0.65;
-meowStandard.volume = 0.65;
-
-// Сozy Meow
-function playCozyMeow() {
-  meowCozy.currentTime = 0;
-  meowCozy.play().catch((err) => {
-    console.log("Cozy meow not loading:", err);
-  });
-}
-
-// Standard Meow
-function playStandardMeow() {
-  meowStandard.currentTime = 0;
-  meowStandard.play().catch((err) => {
-    console.log("Standard meow not loading:", err);
-  });
-}
 
 // Global state
 let currentLang = "en";
@@ -259,7 +235,7 @@ if (nextFactBtn) {
       });
       return;
     }
-    playCozyMeow();
+    playRandomMeow();
     currentFactIndex = moveNext(currentFactIndex);
 
     await loadNewFact();
