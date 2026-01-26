@@ -13,6 +13,7 @@ import { initCurtain, curtainTransition } from "./modules/dojo-curtain.js";
 import { HideBeforeIntro, introStart } from "./modules/intro-start.js";
 import { playRandomMeow, playStandardMeow } from "./modules/meow.js";
 import { showToast } from "./modules/achievements.js";
+import { initPawBackground } from "./modules/pawBackground.js";
 
 // ────────────────────────────────────────────────
 //  DOM (error states)
@@ -116,6 +117,7 @@ let clicks = 0;
 let currentFactIndex = 0;
 let localCatQueue = [];
 let errorToastShown = false;
+let achievementShown = false;
 
 function initAudio() {
   const audio = new Audio("sound.mp3");
@@ -233,6 +235,21 @@ mainBtn?.addEventListener("click", async () => {
         hide(meowContainer);
         const card = document.querySelector(".fact-card");
         if (card) show(card);
+        initPawBackground({
+          count: 25,
+          emoji: "🐾",
+          onClick: (count) => {
+            if (count === 5 && !achievementShown) {
+              achievementShown = true;
+
+              showToast("legendary", {
+                title: achievementsText.secretPawClicks.title[currentLang],
+                desc: achievementsText.secretPawClicks.desc[currentLang],
+                icon: "🌿",
+              });
+            }
+          },
+        });
         showToast("standard", {
           title: achievementsText.first.title[currentLang],
           desc: achievementsText.first.desc[currentLang],
