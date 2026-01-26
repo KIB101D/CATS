@@ -1,6 +1,6 @@
 // modules/facts-card.js
 import { getElement } from "./dom.js";
-import { catFacts, uiFacts } from "./facts/facts.js";
+import { catFacts, uiFacts } from "./translation/translations.js";
 
 export function renderFactCard(lang, catUrl = null, currentFactIndex) {
   const factText = getElement(".cat-fact-text");
