@@ -3,9 +3,9 @@
 [![GitHub forks](https://img.shields.io/github/forks/KIB101D/CATS?style=social)](https://github.com/KIB101D/CATS/network/members)
 [![License](https://img.shields.io/github/license/KIB101D/CATS)](LICENSE)
 
-<center>
-![Desktop gif](https://i.imgur.com/pQbvxmn.gif)
-</center>
+<p align="center">
+  <blockquote class="imgur-embed-pub" lang="en" data-id="a/pQbvxmn" data-context="false" ><a href="//imgur.com/a/pQbvxmn"></a></blockquote>
+</p>
 
 **CATS! – Facts & Chaos** is a **mobile-first**, responsive interactive website created purely for fun :)
 
