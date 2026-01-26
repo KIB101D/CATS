@@ -212,3 +212,48 @@ export const greetingsScreen = {
     tryAgainBtn: "¿Otra vez?",
   },
 };
+
+export const achievementsText = {
+  first: {
+    title: {
+      uk: "Перший Факт",
+      en: "First Fact",
+      pl: "Pierwszy Fakt",
+      es: "¡Primer Gato!",
+    },
+    desc: {
+      uk: "Твоя подорож у хаос котиків почалася!",
+      en: "Your chaotic cat journey has begun!",
+      pl: "Twoja chaotyczna podróż z kotami się rozpoczęła!",
+      es: "¡Tu viaje caótico con gatos ha comenzado!",
+    },
+  },
+  second: {
+    title: {
+      uk: "Перший десяток",
+      en: "The First Ten",
+      pl: "Pierwsza dziesiątka",
+      es: "Los primeros diez",
+    },
+    desc: {
+      uk: "Відчуваєш мяутхнення?",
+      en: "Feeling meow-spired?",
+      pl: "Czujesz miautch nienie?",
+      es: "¿Sientes la miau-spiración?",
+    },
+  },
+  third: {
+    title: {
+      uk: "Дякую!",
+      en: "Thank you!",
+      pl: "Dzięki",
+      es: "¡Gracias!",
+    },
+    desc: {
+      uk: "Ти прочитав усі факти... чи просто клікав бездумно?",
+      en: "You read all the facts... or just mindlessly clicked?",
+      pl: "Przeczytałeś wszystkie fakty... czy po prostu bezmyślnie klikałeś?",
+      es: "Leíste todos los hechos... ¿o solo clicaste sin pensar?",
+    },
+  },
+};
