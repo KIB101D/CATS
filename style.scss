@@ -592,6 +592,7 @@ button {
 .cat-text-box {
   max-width: 315px;
   text-align: center;
+  z-index: 1002;
 
   @include mobile-lg {
     max-width: 420px;
@@ -688,6 +689,7 @@ button {
   color: #0f172a;
   background: var(--color-accent);
   border: none;
+  z-index: 1002;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: var(--btn-shadow);
@@ -1017,6 +1019,7 @@ button {
 #restart-btn {
   padding: 1rem 3rem;
   font-size: 1.15rem;
+  z-index: 1002;
   font-weight: 600;
   color: #ffffff;
   background: linear-gradient(135deg, #4fd1c5 0%, #38b5a8 100%);
