@@ -4,13 +4,12 @@ import {
   catFacts,
   errorMessages,
   greetingsScreen,
-} from "./modules/facts/facts.js";
+} from "./modules/translation/translations.js";
 import { spawnConfetti } from "./modules/confetti.js";
 import { hide, show } from "./modules/hide.js";
 import { renderFactCard, moveNext } from "./modules/facts-card.js";
 import { initCurtain, curtainTransition } from "./modules/dojo-curtain.js";
 import { HideBeforeIntro, introStart } from "./modules/intro-start.js";
-import { initPawBackground } from "./modules/pawBackground.js";
 import { playRandomMeow, playStandardMeow } from "./modules/meow.js";
 
 // ────────────────────────────────────────────────
