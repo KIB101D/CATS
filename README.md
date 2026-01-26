@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/KIB101D/CATS)](LICENSE)
 
 <center>
-![Desktop gif](https://raw.githubusercontent.com/KIB101D/CATS/main/screenshotsCats/gif-desktop.gif)
+![Desktop gif](https://imgur.com/a/axpFNXR)
 </center>
 
 **CATS! – Facts & Chaos** is a **mobile-first**, responsive interactive website created purely for fun :)
