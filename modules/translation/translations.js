@@ -270,4 +270,18 @@ export const achievementsText = {
       es: "Algo salió mal",
     },
   },
+  secretPawClicks: {
+    title: {
+      uk: "Котячі повадки 🐾",
+      en: "Cat-like Habits 🐾",
+      pl: "Kocie zwyczaje 🐾",
+      es: "Hábitos felinos 🐾",
+    },
+    desc: {
+      uk: "Kоти завжди замітають сліди",
+      en: "Cats always cover their tracks",
+      pl: "Koty zawsze zmiatają ślady",
+      es: "Los gatos siempre borran sus huellas",
+    },
+  },
 };
