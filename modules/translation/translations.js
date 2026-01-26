@@ -193,7 +193,7 @@ export const errorMessages = {
 export const greetingsScreen = {
   uk: {
     h1: "Дякую за візит!",
-    p: "Сподіваюся, тобі сподобався цей проєкт 🐾 Можете вільно форкнути або оцінити зірочкою на GitHub!",
+    p: "Сподіваюся, тобі сподобався цей проєкт 🐾 Можеш вільно форкнути або оцінити зірочкою на GitHub!",
     tryAgainBtn: "Пробуємо ще?",
   },
   en: {
@@ -254,6 +254,20 @@ export const achievementsText = {
       en: "You read all the facts... or just mindlessly clicked?",
       pl: "Przeczytałeś wszystkie fakty... czy po prostu bezmyślnie klikałeś?",
       es: "Leíste todos los hechos... ¿o solo clicaste sin pensar?",
+    },
+  },
+  error: {
+    title: {
+      uk: "Упс...",
+      en: "Oops...",
+      pl: "Ups...",
+      es: "Ups...",
+    },
+    desc: {
+      uk: "Щось пішло не так",
+      en: "Something went wrong",
+      pl: "Coś poszło nie tak",
+      es: "Algo salió mal",
     },
   },
 };
