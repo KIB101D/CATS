@@ -115,6 +115,7 @@ let currentLang = "en";
 let clicks = 0;
 let currentFactIndex = 0;
 let localCatQueue = [];
+let errorToastShown = false;
 
 function initAudio() {
   const audio = new Audio("sound.mp3");
@@ -163,7 +164,17 @@ async function loadNewFact() {
   } catch (error) {
     hide(meowContainer);
     console.error("Cat Fetch Error:", error.message);
+
     renderErrorState(error, currentLang);
+
+    if (!errorToastShown) {
+      showToast("rare", {
+        title: achievementsText.error.title[currentLang],
+        desc: achievementsText.error.desc[currentLang],
+        icon: "😬",
+      });
+      errorToastShown = true;
+    }
     return false;
   }
 }
