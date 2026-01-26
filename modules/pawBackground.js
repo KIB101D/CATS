@@ -1,6 +1,7 @@
 const DEFAULTS = {
   count: 14,
   emoji: "🐾",
+  onClick: null,
 };
 
 export function initPawBackground(options = {}) {
@@ -13,6 +14,7 @@ export function initPawBackground(options = {}) {
   }
 
   const paws = [];
+  let clickCount = 0;
 
   function randomPosition(el) {
     const padding = 40;
@@ -29,8 +31,17 @@ export function initPawBackground(options = {}) {
     randomPosition(paw);
 
     paw.addEventListener("click", () => {
+      clickCount++;
+
+      if (typeof settings.onClick === "function") {
+        settings.onClick(clickCount);
+      }
+
       paw.style.opacity = "0";
-      setTimeout(() => randomPosition(paw), 300);
+      setTimeout(() => {
+        paw.style.opacity = "1";
+        randomPosition(paw);
+      }, 300);
     });
 
     pawLayer.appendChild(paw);
@@ -49,6 +60,9 @@ export function initPawBackground(options = {}) {
     destroy() {
       paws.forEach((p) => p.remove());
       paws.length = 0;
+    },
+    getClickCount() {
+      return clickCount;
     },
   };
 }
