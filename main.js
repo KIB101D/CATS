@@ -4,6 +4,7 @@ import {
   catFacts,
   errorMessages,
   greetingsScreen,
+  achievementsText,
 } from "./modules/translation/translations.js";
 import { spawnConfetti } from "./modules/confetti.js";
 import { hide, show } from "./modules/hide.js";
@@ -11,6 +12,7 @@ import { renderFactCard, moveNext } from "./modules/facts-card.js";
 import { initCurtain, curtainTransition } from "./modules/dojo-curtain.js";
 import { HideBeforeIntro, introStart } from "./modules/intro-start.js";
 import { playRandomMeow, playStandardMeow } from "./modules/meow.js";
+import { showToast } from "./modules/achievements.js";
 
 // ────────────────────────────────────────────────
 //  DOM (error states)
@@ -220,7 +222,11 @@ mainBtn?.addEventListener("click", async () => {
         hide(meowContainer);
         const card = document.querySelector(".fact-card");
         if (card) show(card);
-        initPawBackground({ count: 14, emoji: "🐾" });
+        showToast("standard", {
+          title: achievementsText.first.title[currentLang],
+          desc: achievementsText.first.desc[currentLang],
+          icon: "🐾",
+        });
       }
     });
   }
@@ -238,6 +244,14 @@ if (nextFactBtn) {
     currentFactIndex = moveNext(currentFactIndex);
 
     await loadNewFact();
+
+    if (currentFactIndex == 10) {
+      showToast("rare", {
+        title: achievementsText.second.title[currentLang],
+        desc: achievementsText.second.desc[currentLang],
+        icon: "🔎",
+      });
+    }
   });
 }
 
@@ -272,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Greetings screen
 function updateThankYou() {
-  const texts = greetingsScreen[currentLang] || greetingsScreen.uk; // або .en
+  const texts = greetingsScreen[currentLang] || greetingsScreen.en;
 
   thankYouScreen.querySelector("h1").textContent = texts.h1;
 
@@ -288,8 +302,11 @@ function showThankYou() {
   show(thankYouScreen);
 
   updateThankYou();
-
-  spawnConfetti();
+  showToast("legendary", {
+    title: achievementsText.third.title[currentLang],
+    desc: achievementsText.third.desc[currentLang],
+    icon: "💌",
+  });
 }
 
 // Interface initialization
