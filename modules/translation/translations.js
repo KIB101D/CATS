@@ -216,16 +216,16 @@ export const greetingsScreen = {
 export const achievementsText = {
   first: {
     title: {
-      uk: "Перший Факт",
-      en: "First Fact",
-      pl: "Pierwszy Fakt",
-      es: "¡Primer Gato!",
+      uk: "Яскравий Старт!",
+      en: "Big Bang!",
+      pl: "Wybuchowy Start!",
+      es: "¡Gran Explosión!",
     },
     desc: {
-      uk: "Твоя подорож у хаос котиків почалася!",
-      en: "Your chaotic cat journey has begun!",
-      pl: "Twoja chaotyczna podróż z kotami się rozpoczęła!",
-      es: "¡Tu viaje caótico con gatos ha comenzado!",
+      uk: "Салют із котиків запущено!",
+      en: "The cat firework!",
+      pl: "ocia petarda została odpalona!",
+      es: "¡Los fuegos artificiales de gatos han comenzado!",
     },
   },
   second: {
@@ -244,16 +244,16 @@ export const achievementsText = {
   },
   third: {
     title: {
-      uk: "Дякую!",
-      en: "Thank you!",
-      pl: "Dzięki",
-      es: "¡Gracias!",
+      uk: "Кінець?",
+      en: "The End?",
+      pl: "Koniec?",
+      es: "¿El fin?",
     },
     desc: {
-      uk: "Ти прочитав усі факти... чи просто клікав бездумно?",
-      en: "You read all the facts... or just mindlessly clicked?",
-      pl: "Przeczytałeś wszystkie fakty... czy po prostu bezmyślnie klikałeś?",
-      es: "Leíste todos los hechos... ¿o solo clicaste sin pensar?",
+      uk: "Ти дійшов до кінця.",
+      en: "You reached the end.",
+      pl: "Dotarłeś do końca.",
+      es: "Llegaste al final.",
     },
   },
   error: {

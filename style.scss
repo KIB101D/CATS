@@ -238,8 +238,7 @@ button {
   justify-content: center;
   max-width: 600px;
   width: 100%;
-  margin: -80px auto 80px;
-  padding: 20px;
+  margin: 0;
   color: var(--color-text);
 
   p {
@@ -263,7 +262,7 @@ button {
   }
 
   @include desktop {
-    margin: -40px auto 60px;
+    margin: 0;
   }
 }
 
@@ -293,6 +292,56 @@ button {
 // Troll Button
 // ==================================================================
 
+// 1. Створюємо ефект нервового мікро-тремтіння
+@keyframes suspicious-shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-1px, 1px) rotate(-0.5deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(0.5deg);
+  }
+  60% {
+    transform: translate(-1px, -1px) rotate(-0.2deg);
+  }
+  80% {
+    transform: translate(1px, 1px) rotate(0.2deg);
+  }
+}
+
+// 2. Створюємо ефект нестабільного неонового миготіння
+@keyframes suspicious-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(var(--color-accent-rgb), 0.2),
+      var(--btn-shadow);
+    filter: brightness(1);
+  }
+  45% {
+    box-shadow:
+      0 0 12px rgba(var(--color-accent-rgb), 0.25),
+      var(--btn-shadow);
+    filter: brightness(1);
+  }
+  50% {
+    // На мілісекунду кнопка спалахує сильніше, ніби замикає проводка
+    box-shadow:
+      0 0 25px rgba(var(--color-accent-rgb), 0.7),
+      var(--btn-shadow);
+    filter: brightness(1.2);
+  }
+  55% {
+    box-shadow:
+      0 0 10px rgba(var(--color-accent-rgb), 0.2),
+      var(--btn-shadow);
+    filter: brightness(0.95);
+  }
+}
+
 .troll-button {
   display: inline-flex;
   align-items: center;
@@ -304,18 +353,34 @@ button {
   background-color: var(--btn-bg);
   border: 1px solid var(--btn-border);
   border-radius: 12px;
-  box-shadow: var(--btn-shadow);
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: all 0.18s ease;
   user-select: none;
   min-width: 140px;
 
+  // 🚀 ЗАПУСКАЄМО ПІДЗРІЛІСТЬ:
+  // Кнопка постійно ледь помітно тремтить (раз на 0.4с) і стрьомно миготить світлом (раз на 3 секунди)
+  animation:
+    suspicious-shake 0.4s infinite linear,
+    suspicious-glow 3s infinite ease-in-out;
+
+  @include tablet {
+    padding: 20px 48px;
+    font-size: 1.6rem;
+    border-radius: 16px;
+    min-width: 220px;
+  }
+
   &:hover {
     background-color: var(--btn-hover-bg);
-    box-shadow: var(--btn-hover-shadow);
-    transform: translateY(-2px);
     border-color: var(--color-accent);
+    // Коли юзер НАВІВ мишку — кнопка від переляку перестає трястися і готується тікати
+    animation-play-state: paused;
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 30px rgba(var(--color-accent-rgb), 0.8),
+      var(--btn-hover-shadow);
   }
 
   &:active {
@@ -580,46 +645,56 @@ button {
 // ==================================================================
 .fact-card {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 850px; // Робимо картку більш зібраною
   display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // Зсув на власну півширину/піввисоту
+  margin: 0;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+  gap: 24px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+  @include tablet {
+    max-width: 1050px; // 🚀 Збільшено розмір картки для ПК
+    flex-direction: row; // На десктопі картинка і текст стають в ряд
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+  }
 }
 
 .cat-text-box {
-  max-width: 315px;
-  text-align: center;
-  z-index: 1002;
-
-  @include mobile-lg {
-    max-width: 420px;
-    text-align: initial;
-  }
-
-  @include tablet {
-    max-width: 500px;
-  }
+  text-align: left; // Відмовляємося від center-style, це полегшує читання
 }
 
 .cat-fact-text {
-  font-size: clamp(22px, 6.5vw, 30px);
-  line-height: 1.4;
-  color: var(--color-text-light);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  font-size: clamp(20px, 4vw, 24px);
+  line-height: 1.5;
+  color: #f8fafc;
+  text-shadow: none;
 }
 
 .cat-image-box {
   width: 100%;
-  max-width: 500px;
-  aspect-ratio: 5 / 3;
+  max-width: 100%;
+  aspect-ratio: 4 / 3; // Більш квадратна, журнальна пропорція
   overflow: hidden;
-  z-index: 1002;
-  border-radius: 14px;
-  background-color: #eee;
-  position: relative;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  @include tablet {
+    max-width: 480px; // 🚀 Збільшено розмір картинки для ПК відповідно до картки
+    flex-shrink: 0;
+  }
 }
 
 .cat-fact-img {
@@ -689,7 +764,6 @@ button {
   color: #0f172a;
   background: var(--color-accent);
   border: none;
-  z-index: 1002;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: var(--btn-shadow);
@@ -714,7 +788,10 @@ button {
 .gap-box {
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 5vw, 32px);
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 24px;
+  width: 100%;
 }
 
 // ────────────────────────────────────────────────
@@ -887,13 +964,13 @@ button {
 
 .paw {
   position: absolute;
-  font-size: 60px;
+  font-size: 35px; // 📱 Робимо акуратним на мобільних, щоб не займав пів екрана
   opacity: 0;
-  pointer-events: auto;
+  pointer-events: auto; // За замовчуванням коробка приймає кліки
   cursor: pointer;
   user-select: none;
 
-  color: rgba(226, 232, 240, 0.85); // добре видно на #0f172a
+  color: rgba(226, 232, 240, 0.85);
   filter: drop-shadow(0 0 6px rgba(148, 163, 184, 0.25));
 
   animation: paw-fade 9s infinite;
@@ -902,7 +979,7 @@ button {
     transform 0.3s ease;
 
   @include tablet {
-    font-size: 40px;
+    font-size: 40px; // 💻 На комп'ютерах збільшуємо, бо там простору значно більше
   }
 }
 
@@ -1058,19 +1135,25 @@ button {
 .toast {
   position: fixed;
   top: 24px;
-  right: 24px;
+  right: 16px; // Трохи притиснули до краю, щоб на мобілках виглядало акуратніше
   max-width: min(92vw, 360px);
   background: #22303f;
   padding: 16px 20px;
   border: 2px solid #4fd1c5;
-  border-radius: 8px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 9999;
 
+  animation: slideInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+
   @include tablet {
+    right: 24px;
     max-width: inherit;
+  }
+
+  &.fade-out {
+    animation: slideOutRight 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045)
+      forwards;
   }
 }
 

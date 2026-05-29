@@ -10,17 +10,14 @@ let audioContextUnlocked = false;
 // Space Sound
 const spaceWonder = new Audio("./assets/sounds/space.mp3");
 spaceWonder.preload = "auto";
-spaceWonder.volume = 0.7;
+spaceWonder.volume = 0.2;
 spaceWonder.loop = false;
 
-// Hide elements
 export function HideBeforeIntro() {
-  // спочатку ховаємо основний контент
   if (catBox) hide(catBox);
   if (trollBtn) hide(trollBtn);
   if (langSelector) hide(langSelector);
 
-  // також ховаємо .meow-container на початку
   const meow = document.querySelector(".meow-container");
   if (meow) hide(meow);
 }
@@ -29,8 +26,9 @@ function initSpaceWarp() {
   if (!spaceCanvas) return;
 
   const ctx = spaceCanvas.getContext("2d");
-
   let w, h;
+  const isMobile = window.innerWidth < 768;
+
   function resize() {
     w = spaceCanvas.width = window.innerWidth;
     h = spaceCanvas.height = window.innerHeight;
@@ -38,15 +36,17 @@ function initSpaceWarp() {
   window.addEventListener("resize", resize);
   resize();
 
-  const stars = Array.from({ length: 900 }, () => ({
+  const starCount = isMobile ? 350 : 900;
+
+  const stars = Array.from({ length: starCount }, () => ({
     x: (Math.random() - 0.5) * w,
     y: (Math.random() - 0.5) * h,
     z: Math.random() * w * 1.5,
   }));
 
-  let speed = 70;
+  let speed = isMobile ? 16 : 70;
+  let drift = isMobile ? 0.35 : 1.4;
   let zoom = 1;
-  let drift = 1.4;
 
   const stopTime = performance.now() + 3400;
   const driftTime = stopTime + 1100;
@@ -77,7 +77,9 @@ function initSpaceWarp() {
       const k = 180 / s.z;
       const px = s.x * k;
       const py = s.y * k;
-      const size = (1 - s.z / (w * 1.5)) * 2.8;
+
+      const sizeFactor = isMobile ? 2.2 : 2.8;
+      const size = (1 - s.z / (w * 1.5)) * sizeFactor;
 
       ctx.fillStyle = "white";
       ctx.fillRect(px, py, size, size);
@@ -90,6 +92,7 @@ function initSpaceWarp() {
   requestAnimationFrame(draw);
 }
 
+// Головна функція старту
 export function introStart() {
   if (!spaceCanvas) {
     console.warn("Canvas #space не знайдено");
@@ -98,10 +101,17 @@ export function introStart() {
   }
 
   initSpaceWarp();
+
+  // Запускаємо звук. Якщо активовано через тач/клік, мобільний його пропустить
   spaceWonder.currentTime = 0;
-  spaceWonder.play().catch((err) => {
-    console.log("Space sound autoplay blocked:", err);
-  });
+  spaceWonder
+    .play()
+    .then(() => {
+      audioContextUnlocked = true;
+    })
+    .catch((err) => {
+      console.log("Space sound autoplay blocked:", err);
+    });
 
   setTimeout(() => {
     document.body.classList.add("intro-finished");
@@ -119,7 +129,7 @@ export function introStart() {
 
       const meow = document.querySelector(".meow-container");
       if (meow) show(meow);
-    }, 1400); // затримка після згасання космосу
+    }, 1400);
   }, 5200);
 }
 
@@ -131,21 +141,30 @@ function showContentImmediately() {
   if (meow) show(meow);
 }
 
-// Intro sound unlock
-document.addEventListener(
-  "click",
-  function unlockAudio() {
-    if (!audioContextUnlocked && spaceWonder.paused) {
-      spaceWonder
-        .play()
-        .then(() => {
-          spaceWonder.pause();
-          spaceWonder.currentTime = 0;
-          audioContextUnlocked = true;
-          console.log("Аудіо-контекст розблоковано");
-        })
-        .catch((e) => console.log("Не вдалося розблокувати:", e));
-    }
-  },
-  { once: true },
-);
+// Mobile (click context unlock)
+const unlockEvents = ["click", "touchstart", "touchend", "keydown"];
+
+function unlockAudio() {
+  if (!audioContextUnlocked) {
+    spaceWonder
+      .play()
+      .then(() => {
+        spaceWonder.pause();
+        spaceWonder.currentTime = 0;
+        audioContextUnlocked = true;
+        console.log("Мобільний AudioContext успішно розблоковано!");
+        removeUnlockListeners();
+      })
+      .catch((e) => console.log("Спроба прогріву аудіо...", e));
+  }
+}
+
+function removeUnlockListeners() {
+  unlockEvents.forEach((evt) => {
+    document.removeEventListener(evt, unlockAudio);
+  });
+}
+
+unlockEvents.forEach((evt) => {
+  document.addEventListener(evt, unlockAudio, { passive: true });
+});
