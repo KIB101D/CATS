@@ -192,23 +192,23 @@ export const errorMessages = {
 
 export const greetingsScreen = {
   uk: {
-    h1: "Дякую за візит!",
-    p: "Сподіваюся, тобі сподобався цей проєкт 🐾 Можеш вільно форкнути або оцінити зірочкою на GitHub!",
+    h1: "Оце це так марафон, мяу! 🐾",
+    p: "Усі факти про котиків закінчилися, але якщо хочеш просто порелаксувати ще раз — кнопочка чекає на тебе знизу.",
     tryAgainBtn: "Пробуємо ще?",
   },
   en: {
-    h1: "Thanks for visiting!",
-    p: "Hope you enjoyed this project 🐾 Feel free to fork or star it on GitHub!",
+    h1: "What a marathon, meow! 🐾",
+    p: "All the cat facts have come to an end, but if you just want to relax all over again — the button is waiting for you below.",
     tryAgainBtn: "Try again?",
   },
   pl: {
-    h1: "Dzięki za wizytę!",
-    p: "Mam nadzieję, że ten projekt Ci się spodobał 🐾 Śmiało forkuj lub daj gwiazdkę na GitHubie!",
+    h1: "Ale maraton, miau! 🐾",
+    p: "Wszystkie ciekawostki o kotach już się skończyły, ale jeśli chcesz po prostu się zrelaksować jeszcze raz — przycisk czeka na Ciebie poniżej.",
     tryAgainBtn: "Jeszcze raz?",
   },
   es: {
-    h1: "¡Gracias por visitarnos!",
-    p: "Espero que te haya gustado este proyecto 🐾 ¡Siéntete libre de hacer fork o darle una estrellita en GitHub!",
+    h1: "¡Vaya maratón! Miau 🐾",
+    p: "Todos los datos sobre gatos han terminado, pero si solo quieres relajarte y ver nuevas fotos peluditas una vez más — el botón te está esperando abajo.",
     tryAgainBtn: "¿Otra vez?",
   },
 };
